@@ -17,6 +17,10 @@
     "rutube.ru",
     "embed"
   ],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/nmehdiyev/rutube-ok-vkvideo-embed.git"
+	},  
   "author": "Nazim Mehdiyev",
   "license": "MIT",
   "devDependencies": {
