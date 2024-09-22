@@ -7,6 +7,7 @@
 
 - Automatically detects the platform (VK Video, OK.ru, or Rutube) from the URL.
 - Generates an iframe embed code or returns the video URL.
+- Provides a `getPlatform` method to identify the platform directly from a URL.
 - Configurable iframe size, frameborder, and fullscreen options.
 
 ## Installation
@@ -22,7 +23,10 @@ via yarn:
 ```bash
 yarn add rutube-ok-vkvideo-embed
 ```
+
 ## Usage
+
+### Embed Code Generation
 
 First, import the `ROVEmbed` function into your project:
 
@@ -42,6 +46,17 @@ const embedCode = ROVEmbed({
 console.log(embedCode);
 ```
 
+### Get Platform from URL
+
+You can also directly determine the platform of a video URL using the `getPlatform` method:
+
+```typescript
+import ROVEmbed from 'rutube-ok-vkvideo-embed';
+
+const platform = ROVEmbed.getPlatform('https://vk.com/video?z=video-123456_78901234');
+console.log(platform);  // Outputs: 'vkvideo'
+```
+
 ### Parameters
 
 - `url` (string, required): The URL of the video.
@@ -54,7 +69,8 @@ console.log(embedCode);
 
 ### Return Value
 
-- Returns the embed code as a string, or `undefined` if an error occurs.
+- **ROVEmbed**: Returns the embed code as a string, or `undefined` if an error occurs.
+- **ROVEmbed.getPlatform**: Returns the platform as a string (`'vkvideo'`, `'rutube'`, or `'ok'`).
 
 ## Example
 
@@ -72,6 +88,9 @@ const embedCode = ROVEmbed({
 });
 
 console.log(embedCode);  // Outputs the iframe embed code or URL
+
+const platform = ROVEmbed.getPlatform('https://vk.com/video?z=video-123456_78901234');
+console.log(platform);  // Outputs: 'vkvideo'
 ```
 
 ## Enum: ePlatformType

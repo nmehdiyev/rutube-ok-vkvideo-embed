@@ -26,20 +26,29 @@ const ROVEmbed = ({ url, platform, size = { width: 300, height: 300 }, allow = "
             platform,
             regex: { okRegex, rutubeRegex, vkRegex },
         });
-        const iframe = (0, func_1.generate_iframe)({
-            ids: ids,
-            platform: platform,
-            size: size,
-            allow: allow,
-            frameborder: frameborder,
-            allowfullscreen: allowfullscreen,
-            only_url: only_url,
-        });
+        const iframe = ids.id != ""
+            ? (0, func_1.generate_iframe)({
+                ids: ids,
+                platform: platform,
+                size: size,
+                allow: allow,
+                frameborder: frameborder,
+                allowfullscreen: allowfullscreen,
+                only_url: only_url,
+            })
+            : "";
         return iframe;
     }
     catch (e) {
-        console.error(e);
         return;
     }
 };
 exports.default = ROVEmbed;
+const getPlatform = (url) => {
+    if (!url) {
+        throw new Error("Url required");
+    }
+    const parsed_url = (0, func_1.parse)({ url });
+    return (0, func_1.find_platform)({ url: parsed_url });
+};
+ROVEmbed.getPlatform = getPlatform;

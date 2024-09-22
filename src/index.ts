@@ -37,19 +37,33 @@ const ROVEmbed = ({
       platform,
       regex: { okRegex, rutubeRegex, vkRegex },
     });
-    const iframe = generate_iframe({
-      ids: ids,
-      platform: platform,
-      size: size,
-      allow: allow,
-      frameborder: frameborder,
-      allowfullscreen: allowfullscreen,
-      only_url: only_url,
-    });
+
+    const iframe =
+      ids.id != ""
+        ? generate_iframe({
+            ids: ids,
+            platform: platform,
+            size: size,
+            allow: allow,
+            frameborder: frameborder,
+            allowfullscreen: allowfullscreen,
+            only_url: only_url,
+          })
+        : "";
     return iframe;
   } catch (e) {
     return;
   }
 };
+
+const getPlatform = (url: string): ePlatformType | undefined => {
+  if (!url) {
+    throw new Error("Url required");
+  }
+  const parsed_url = parse({ url });
+  return find_platform({ url: parsed_url });
+};
+
+ROVEmbed.getPlatform = getPlatform;
 
 export { ROVEmbed as default, ePlatformType };

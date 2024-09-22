@@ -1,6 +1,6 @@
 enum ePlatformType {
-  vkvideo,
-  rutube,
-  ok,
+  vkvideo = "vkvideo",
+  rutube = "rutube",
+  ok = "ok",
 }
 export default ePlatformType;

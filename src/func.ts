@@ -22,9 +22,12 @@ const get_id = ({
           if (url.hostname.indexOf("ok.ru") > -1) {
             const match = url.path.match(okRegex);
             if (match) {
+              if (match[1] == undefined || match[1] == "") {
+                throw "Ok.ru detected, but incorrect format";
+              }
               return { id: match[1] };
             } else {
-              throw "Incorrect format";
+              throw "Ok.ru detected, but incorrect format";
             }
           }
           break;
@@ -32,9 +35,12 @@ const get_id = ({
           if (url.hostname.indexOf("rutube.ru") > -1) {
             const match = url.path.match(rutubeRegex);
             if (match) {
+              if (match[1] == undefined || match[1] == "") {
+                throw "Rutube detected, but incorrect format";
+              }
               return { id: match[1] };
             } else {
-              throw "Incorrect format";
+              throw "Rutube detected, but incorrect format";
             }
           }
           break;
@@ -42,12 +48,20 @@ const get_id = ({
           if (url.hostname.indexOf("vk.com") > -1) {
             const match = url.path.match(vkRegex);
             if (match) {
+              if (
+                match[1] == undefined ||
+                match[2] == undefined ||
+                match[1] == "" ||
+                match[2] == ""
+              ) {
+                throw "VK detected, but incorrect format";
+              }
               return {
                 oid: match[1],
                 id: match[2],
               };
             } else {
-              throw "Incorrect format ";
+              throw "VK detected, but incorrect format";
             }
           }
           break;
@@ -58,7 +72,7 @@ const get_id = ({
       throw "Url is not valid";
     }
   } catch (e) {
-    console.error(e);
+    console.info(e);
     return { id: "" };
   }
   return { id: "" };
