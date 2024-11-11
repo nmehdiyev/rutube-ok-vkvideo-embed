@@ -1,6 +1,6 @@
 {
   "name": "rutube-ok-vkvideo-embed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get embed code for VkVideo, OK and Rutube from Url. Short ROVEmbed",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,10 +17,10 @@
     "rutube.ru",
     "embed"
   ],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/nmehdiyev/rutube-ok-vkvideo-embed.git"
-	},  
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nmehdiyev/rutube-ok-vkvideo-embed.git"
+  },
   "author": "Nazim Mehdiyev",
   "license": "MIT",
   "devDependencies": {

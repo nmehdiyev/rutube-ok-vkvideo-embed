@@ -2,8 +2,8 @@ import ePlatformType from "./enum";
 import ISize from "./ISize";
 import { find_platform, generate_iframe, get_id, parse } from "./func";
 const okRegex = /video\/(\d+)/;
-const rutubeRegex = /video\/([a-zA-Z0-9]+)/;
-const vkRegex = /video(?:\?z=video|)(-?\d+)_(\d+)/;
+const rutubeRegex = /(?:video|shorts)\/([a-zA-Z0-9]+)/;
+const vkRegex = /(?:video|clip)(-?\d+)_(\d+)/;
 
 const ROVEmbed = ({
   url,

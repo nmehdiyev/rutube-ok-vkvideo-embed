@@ -8,8 +8,8 @@ const enum_1 = __importDefault(require("./enum"));
 exports.ePlatformType = enum_1.default;
 const func_1 = require("./func");
 const okRegex = /video\/(\d+)/;
-const rutubeRegex = /video\/([a-zA-Z0-9]+)/;
-const vkRegex = /video(?:\?z=video|)(-?\d+)_(\d+)/;
+const rutubeRegex = /(?:video|shorts)\/([a-zA-Z0-9]+)/;
+const vkRegex = /(?:video|clip)(-?\d+)_(\d+)/;
 const ROVEmbed = ({ url, platform, size = { width: 300, height: 300 }, allow = "", frameborder = 0, allowfullscreen = false, only_url = false, }) => {
     try {
         if (url == undefined) {
